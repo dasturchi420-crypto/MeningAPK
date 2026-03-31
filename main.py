@@ -2,9 +2,9 @@ name: Build APK
 on: [push, pull_request]
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Build with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
         with:
