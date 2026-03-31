@@ -1,9 +1,12 @@
-from kivy.app import App
-from kivy.uix.button import Button
-
-class MainApp(App):
-    def build(self):
-        return Button(text='Salom, bu mening yangi APK ilovam!')
-
-if __name__ == '__main__':
-    MainApp().run()
+name: Build APK
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build with Buildozer
+        uses: ArtemSBulgakov/buildozer-action@v1
+        with:
+          command: buildozer android debug
+          buildozer_version: master
